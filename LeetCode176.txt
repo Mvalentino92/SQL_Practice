@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+SELECT
+  MAX(e_cp.Salary) AS 'SecondHighestSalary'
+FROM
+    Employee as e
+JOIN
+    Employee as e_cp
+ON
+    e.Salary > e_cp.Salary

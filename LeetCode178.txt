@@ -1,0 +1,35 @@
+# Write your MySQL query statement below
+
+SELECT
+    ss.Score,
+    d_s.Rank
+FROM
+    Scores AS ss
+JOIN
+    (SELECT
+        s.Score,
+        COUNT(*) AS 'Rank'
+    FROM 
+        (
+            SELECT 
+                DISTINCT Score
+            FROM Scores
+        ) AS s
+    JOIN
+        (
+            SELECT
+                DISTINCT Score
+            FROM Scores
+        ) as s_cp
+    ON 
+        s.Score <= s_cp.Score
+    GROUP BY
+        s.Score
+    ORDER BY
+        Score DESC
+     ) AS d_s
+ON
+    ss.Score = d_s.Score
+ORDER BY
+    ss.Score DESC
+    

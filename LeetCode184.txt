@@ -1,0 +1,28 @@
+# Write your MySQL query statement below
+SELECT
+    ms.Name AS 'Department',
+    e.Name AS 'Employee',
+    e.Salary
+FROM
+    Employee as e
+JOIN
+    (
+        select
+            d.Id,
+            d.Name,
+            max(e.Salary) AS 'SalaryMax'
+        from
+            Employee as e
+        join
+            Department as d
+        on
+            e.DepartmentId = d.Id
+        group by
+            d.Id
+    )   AS ms
+ON
+    ms.Id = e.DepartmentId
+WHERE
+    e.Salary = ms.SalaryMax
+ORDER BY
+    ms.Name,e.Name

@@ -1,0 +1,14 @@
+# Write your MySQL query statement below
+SELECT
+    sub.class
+FROM
+    (
+    SELECT 
+        DISTINCT *
+    FROM
+        courses
+    ) AS sub
+GROUP BY
+    sub.class
+HAVING
+    COUNT(*) >= 5

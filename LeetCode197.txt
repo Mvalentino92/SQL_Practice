@@ -1,0 +1,11 @@
+# Write your MySQL query statement below
+SELECT
+    w.Id
+FROM
+    Weather AS w
+INNER JOIN
+    Weather AS w_cp
+ON  
+    DATE(w.RecordDate) = DATE_ADD(w_cp.RecordDate,INTERVAL 1 DAY)
+WHERE
+   w.Temperature > w_cp.Temperature
