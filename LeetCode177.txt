@@ -1,0 +1,19 @@
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+  RETURN (
+      # Write your MySQL query statement below.
+      SELECT
+	DISTINCT e.Salary
+FROM
+	Employee as e
+WHERE
+	N IN 
+	(SELECT
+		COUNT(*) - SUM(rub.bools)
+	FROM
+		(SELECT
+			e.Salary > ds.Salary as bools
+		FROM
+			(select distinct Salary from Employee) as ds) as rub)
+  );
+END
