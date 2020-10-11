@@ -1,0 +1,11 @@
+select d.Name as Department,e.Name as Employee,e.Salary as Salary
+from Employee as e
+join Department as d
+on e.DepartmentId = d.Id
+where (e.Salary,e.DepartmentId) in
+
+(select e.Salary,e.DepartmentId 
+from (select distinct(Salary),DepartmentId from Employee) as e 
+join (select distinct(Salary),DepartmentId from Employee) as ee 
+on e.Salary <= ee.Salary and e.DepartmentId = ee.DepartmentId 
+group by e.Salary,e.DepartmentId having count(*) <= 3);
