@@ -10,5 +10,15 @@
 		"alligator":"A large reptile with a big bite",
 		"bell":"Makes a delightful noise when used",
 		"highway":"Cars drive on this at high speeds"
+	},
+	{
+		"messages":["Snipers are the best guns in games",
+			    "Steve can eat more than anybody",
+			    "Fire is hot when you touch it",
+			    "If you cannot swim you will drown",
+			    "Flamingos are weird really really weird",
+			    "Always chew your food at least five times"
+			   ]
 	}
+
 ]
